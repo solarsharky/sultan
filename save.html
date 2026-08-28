@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-sultan-v2>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -378,6 +378,323 @@
     @media (max-width: 360px) {
       .friendly-tag-grid { grid-template-columns: 1fr; }
     }
+  </style>
+  <style id="sultan-v2-styles">
+:root {
+  --v2-bg: #0d0b09;
+  --v2-surface: #17130f;
+  --v2-surface-2: #201a14;
+  --v2-surface-3: #292018;
+  --v2-border: #453521;
+  --v2-border-strong: #73552c;
+  --v2-gold: #e6ba58;
+  --v2-gold-bright: #ffd77c;
+  --v2-text: #f5ead6;
+  --v2-muted: #b7a78d;
+  --v2-good: #73c996;
+  --v2-danger: #ef8b78;
+  --v2-radius: 18px;
+  --v2-shadow: 0 18px 55px rgba(0, 0, 0, .28);
+}
+
+html[data-sultan-v2] { color-scheme: dark; background: var(--v2-bg); }
+html[data-sultan-v2] body {
+  min-height: 100dvh;
+  color: var(--v2-text);
+  background:
+    radial-gradient(circle at 18% -10%, rgba(180, 126, 43, .16), transparent 34rem),
+    radial-gradient(circle at 100% 35%, rgba(102, 61, 28, .1), transparent 34rem),
+    var(--v2-bg);
+}
+html[data-sultan-v2] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .16;
+  background-image: linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+html[data-sultan-v2] .shell { width: min(1480px, calc(100% - 32px)); padding-bottom: 5.5rem; }
+html[data-sultan-v2] .app-header { padding: 24px 4px 18px; }
+html[data-sultan-v2] .brand h1 { letter-spacing: .02em; }
+html[data-sultan-v2] .panel,
+html[data-sultan-v2] .topbar,
+html[data-sultan-v2] .card-item,
+html[data-sultan-v2] .rite-item,
+html[data-sultan-v2] .subpanel {
+  border-color: var(--v2-border);
+  background: linear-gradient(145deg, rgba(32,26,20,.98), rgba(20,17,14,.98));
+  box-shadow: var(--v2-shadow);
+}
+html[data-sultan-v2] button,
+html[data-sultan-v2] input,
+html[data-sultan-v2] select,
+html[data-sultan-v2] textarea { min-height: 44px; }
+html[data-sultan-v2] button:focus-visible,
+html[data-sultan-v2] input:focus-visible,
+html[data-sultan-v2] select:focus-visible,
+html[data-sultan-v2] textarea:focus-visible,
+html[data-sultan-v2] summary:focus-visible {
+  outline: 3px solid rgba(255, 215, 124, .72);
+  outline-offset: 2px;
+}
+
+.v2-onboarding {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0 4px;
+}
+.v2-onboarding-step {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  padding: 14px;
+  border: 1px solid var(--v2-border);
+  border-radius: 14px;
+  background: rgba(255,255,255,.025);
+  text-align: left;
+}
+.v2-step-number {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: #1a1208;
+  background: var(--v2-gold);
+  border-radius: 50%;
+  font-weight: 900;
+}
+.v2-onboarding-step strong { display: block; color: var(--v2-gold-bright); margin: 1px 0 4px; }
+.v2-onboarding-step span:last-child { color: var(--v2-muted); font-size: .88rem; line-height: 1.55; }
+.v2-path-details { width: 100%; margin-top: 10px; }
+.v2-path-details > summary { color: var(--v2-gold-bright); font-weight: 800; cursor: pointer; }
+.v2-path-details > .v2-path-details-body { margin-top: 12px; }
+
+html[data-sultan-v2] #editor.loaded { display: grid; gap: 12px; }
+html[data-sultan-v2] .topbar {
+  position: sticky;
+  top: 10px;
+  z-index: 25;
+  border-radius: var(--v2-radius);
+  backdrop-filter: blur(18px);
+  background: rgba(22, 18, 14, .93);
+}
+.v2-app-layout {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+.v2-sidebar {
+  position: sticky;
+  top: 100px;
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid var(--v2-border);
+  border-radius: var(--v2-radius);
+  background: rgba(23,19,15,.96);
+  box-shadow: var(--v2-shadow);
+}
+.v2-sidebar-title { padding: 7px 9px 3px; color: var(--v2-muted); font-size: .78rem; letter-spacing: .12em; }
+.v2-nav-button {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 12px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--v2-muted);
+  text-align: left;
+}
+.v2-nav-button:hover { background: rgba(230,186,88,.07); color: var(--v2-text); }
+.v2-nav-button[aria-current="page"] {
+  color: var(--v2-gold-bright);
+  border-color: var(--v2-border-strong);
+  background: linear-gradient(90deg, rgba(230,186,88,.16), rgba(230,186,88,.04));
+}
+.v2-nav-icon { width: 24px; color: var(--v2-gold); text-align: center; font-size: 1.04rem; }
+.v2-sidebar-divider { height: 1px; margin: 5px 2px; background: var(--v2-border); }
+.v2-advanced-toggle[aria-pressed="true"] { color: var(--v2-good); border-color: rgba(115,201,150,.42); }
+.v2-workspace { min-width: 0; }
+html[data-sultan-v2] .tabs { display: none; }
+html[data-sultan-v2] .section-panel { border-radius: var(--v2-radius); padding: clamp(16px, 2.5vw, 28px); }
+html[data-sultan-v2] .section-panel:focus { outline: none; }
+
+.v2-dashboard-status {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(110px, .55fr));
+  gap: 10px;
+  margin: 14px 0;
+}
+.v2-status-card {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--v2-border);
+  border-radius: 14px;
+  background: rgba(255,255,255,.025);
+}
+.v2-status-card span { display: block; color: var(--v2-muted); font-size: .78rem; margin-bottom: 5px; }
+.v2-status-card strong { display: block; overflow: hidden; text-overflow: ellipsis; color: var(--v2-text); font-size: 1.05rem; }
+.v2-status-card.v2-good strong { color: var(--v2-good); }
+.v2-status-card.v2-danger strong { color: var(--v2-danger); }
+.v2-task-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 14px 0 22px;
+}
+.v2-task-card {
+  min-height: 150px;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 20px;
+  color: var(--v2-text);
+  border: 1px solid var(--v2-border);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(230,186,88,.1), rgba(255,255,255,.018) 55%);
+  text-align: left;
+}
+.v2-task-card:hover { transform: translateY(-1px); border-color: var(--v2-border-strong); background: linear-gradient(135deg, rgba(230,186,88,.16), rgba(255,255,255,.028) 60%); }
+.v2-task-icon { width: 52px; height: 52px; display: grid; place-items: center; border: 1px solid var(--v2-border-strong); border-radius: 14px; color: var(--v2-gold-bright); font-size: 1.35rem; }
+.v2-task-copy strong { display: block; margin-bottom: 6px; color: var(--v2-gold-bright); font-size: 1.08rem; }
+.v2-task-copy span { display: block; color: var(--v2-muted); font-size: .87rem; line-height: 1.5; }
+.v2-task-count { color: var(--v2-text); font-size: 1.25rem; font-weight: 800; }
+.v2-home-section-label { margin: 24px 0 10px; color: var(--v2-gold-bright); font-size: 1rem; }
+
+.v2-category-bar { display: flex; gap: 8px; overflow-x: auto; margin: 10px 0 14px; padding: 2px 1px 7px; scrollbar-width: thin; }
+.v2-category-chip { flex: 0 0 auto; min-height: 38px !important; padding: 7px 12px; border-radius: 999px; color: var(--v2-muted); background: rgba(255,255,255,.025); }
+.v2-category-chip[aria-pressed="true"] { color: #1b1308; border-color: var(--v2-gold); background: var(--v2-gold); font-weight: 800; }
+.v2-category-select { position: absolute !important; width: 1px !important; height: 1px !important; min-height: 1px !important; clip: rect(0 0 0 0); clip-path: inset(50%); overflow: hidden; white-space: nowrap; }
+
+html[data-sultan-v2] .card-item,
+html[data-sultan-v2] .rite-item { padding: 0; overflow: clip; transition: border-color .18s ease, background .18s ease; }
+html[data-sultan-v2] .card-item.v2-open,
+html[data-sultan-v2] .rite-item.v2-open { border-color: var(--v2-border-strong); }
+html[data-sultan-v2] .card-item > .item-head,
+html[data-sultan-v2] .rite-item > .item-head { padding: 14px; align-items: center; }
+.v2-item-toggle {
+  min-width: 44px;
+  width: 44px;
+  padding: 0;
+  border-radius: 12px;
+  color: var(--v2-gold-bright);
+  background: rgba(230,186,88,.07);
+  font-size: 1.1rem;
+}
+.v2-item-body { display: none; padding: 0 14px 16px; border-top: 1px solid transparent; }
+.v2-open > .v2-item-body { display: block; border-top-color: var(--v2-border); padding-top: 14px; }
+.v2-sultan-hand-notice { margin-bottom: 12px; }
+.v2-sultan-section-fold {
+  margin-top: 14px;
+  border: 1px solid var(--v2-border);
+  border-radius: var(--v2-radius);
+  background: rgba(255,255,255,.018);
+  overflow: clip;
+}
+.v2-sultan-section-fold > summary {
+  padding: 15px 17px;
+  color: var(--v2-gold-bright);
+  font-weight: 800;
+  cursor: pointer;
+}
+.v2-sultan-section-fold[open] > summary { border-bottom: 1px solid var(--v2-border); }
+.v2-sultan-section-fold > .v2-sultan-section-body {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+body:not([data-v2-advanced-enabled="true"]) .v2-advanced-only { display: none !important; }
+
+.v2-bottom-nav,
+.v2-more-sheet { display: none; }
+body:not(.v2-loaded) .v2-bottom-nav,
+body:not(.v2-loaded) .v2-more-sheet { display: none !important; }
+.v2-bottom-nav { padding-bottom: env(safe-area-inset-bottom); }
+.v2-mobile-nav-button { min-width: 0; border: 0; border-radius: 0; background: transparent; color: var(--v2-muted); font-size: .72rem; }
+.v2-mobile-nav-button span { display: block; margin-bottom: 3px; color: var(--v2-gold); font-size: 1.05rem; }
+.v2-mobile-nav-button[aria-current="page"] { color: var(--v2-gold-bright); background: rgba(230,186,88,.1); }
+.v2-more-sheet {
+  position: fixed;
+  z-index: 50;
+  left: 10px;
+  right: 10px;
+  bottom: calc(72px + env(safe-area-inset-bottom));
+  padding: 12px;
+  border: 1px solid var(--v2-border-strong);
+  border-radius: 16px;
+  background: rgba(26,21,16,.98);
+  box-shadow: 0 24px 80px rgba(0,0,0,.6);
+}
+.v2-more-sheet.v2-open { display: grid; gap: 8px; }
+
+@media (max-width: 900px) {
+  html[data-sultan-v2] .shell { width: min(100% - 18px, 1480px); }
+  .v2-app-layout { grid-template-columns: 190px minmax(0, 1fr); gap: 10px; }
+  .v2-sidebar { padding: 10px; }
+  .v2-nav-button { padding-inline: 9px; }
+  .v2-dashboard-status { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  html[data-sultan-v2], html[data-sultan-v2] body { max-width: 100%; overflow-x: hidden; }
+  html[data-sultan-v2] .shell { width: 100%; padding: 0 8px 92px; }
+  html[data-sultan-v2] .app-header { padding: 14px 4px 10px; }
+  html[data-sultan-v2] .brand h1 { font-size: 1.05rem; }
+  html[data-sultan-v2] .badges { display: none; }
+  .v2-onboarding { grid-template-columns: 1fr; }
+  .v2-onboarding-step { padding: 11px; }
+  html[data-sultan-v2] .topbar { top: 6px; padding: 10px; border-radius: 14px; }
+  html[data-sultan-v2] .topbar .file-summary { flex: 1 1 100%; }
+  html[data-sultan-v2] .topbar .actions { width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  html[data-sultan-v2] .topbar .actions button { min-width: 0; padding: 8px 5px; font-size: .72rem; }
+  .v2-app-layout { display: block; width: 100%; max-width: 100%; }
+  .v2-workspace { width: 100%; max-width: 100%; min-width: 0; contain: inline-size; }
+  html[data-sultan-v2] .section-panel,
+  html[data-sultan-v2] .list,
+  html[data-sultan-v2] .card-item,
+  html[data-sultan-v2] .rite-item { width: 100%; max-width: 100%; min-width: 0; }
+  .v2-sidebar { display: none; }
+  html[data-sultan-v2] .section-panel { padding: 14px 10px; border-radius: 14px; }
+  .v2-dashboard-status { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .v2-task-grid { grid-template-columns: 1fr; }
+  .v2-task-card { min-height: 112px; grid-template-columns: 44px minmax(0, 1fr) auto; padding: 15px; }
+  .v2-task-icon { width: 44px; height: 44px; }
+  .v2-bottom-nav {
+    position: fixed;
+    z-index: 45;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    min-height: 64px;
+    border-top: 1px solid var(--v2-border-strong);
+    background: rgba(17,14,11,.97);
+    box-shadow: 0 -14px 40px rgba(0,0,0,.4);
+    backdrop-filter: blur(18px);
+  }
+  html[data-sultan-v2] .toolbar { gap: 8px; }
+  html[data-sultan-v2] .toolbar > * { flex: 1 1 100%; }
+  html[data-sultan-v2] .item-head { grid-template-columns: auto minmax(0, 1fr); gap: 8px; }
+  html[data-sultan-v2] .item-head > .item-title { grid-column: 2; }
+  html[data-sultan-v2] .item-head > button:not(.v2-item-toggle) { grid-column: 1 / -1; }
+  .v2-item-toggle { grid-row: 1; grid-column: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
   </style>
 </head>
 <body>
@@ -2607,6 +2924,525 @@
       });
       window.addEventListener("beforeunload", event => { if (state.working && !isSemanticallyOriginal()) { event.preventDefault(); event.returnValue = ""; } });
     }
+
+    // Sultan Save Editor V2 enhancement layer. The legacy source remains read-only.
+    document.documentElement.setAttribute("data-sultan-v2", "");
+    state.v2Advanced = false;
+    state.v2ExpandedCardUid = null;
+    state.v2ExpandedRiteUid = null;
+    state.v2SourceWarning = "";
+    state.v2SultanSectionOpen = {held:false, pending:false};
+
+    const V2_ROUTE_LABELS = Object.freeze({
+      overview:"首页", cards:"我的手牌与物品", sultan:"苏丹卡牌池",
+      rites:"仪式与期限", counters:"声望与资源", raw:"检查与保存"
+    });
+    const V2_ROUTE_ICONS = Object.freeze({overview:"⌂", cards:"牌", sultan:"苏", rites:"仪", counters:"誉", raw:"检"});
+
+    function v2NavButton(route, label = V2_ROUTE_LABELS[route], icon = V2_ROUTE_ICONS[route]) {
+      const button = h("button", {
+        class:"v2-nav-button", type:"button", dataset:{v2Route:route},
+        onclick:() => activateTab(route)
+      }, [h("span", {class:"v2-nav-icon", text:icon, ariaHidden:"true"}), h("span", {text:label})]);
+      button.setAttribute("aria-current", state.activeTab === route ? "page" : "false");
+      return button;
+    }
+
+    function v2SetMoreOpen(open) {
+      const sheet = $("#v2MoreSheet");
+      const trigger = $("#v2MoreButton");
+      if (!sheet || !trigger) return;
+      sheet.classList.toggle("v2-open", open);
+      trigger.setAttribute("aria-expanded", String(open));
+    }
+
+    function v2SyncNavigation() {
+      $$('[data-v2-route]').forEach(button => {
+        const active = button.dataset.v2Route === state.activeTab;
+        button.setAttribute("aria-current", active ? "page" : "false");
+      });
+      const more = $("#v2MoreButton");
+      if (more) more.setAttribute("aria-current", ["counters","raw"].includes(state.activeTab) ? "page" : "false");
+      v2SetMoreOpen(false);
+    }
+
+    function v2ToggleAdvanced(force) {
+      const next = typeof force === "boolean" ? force : !state.v2Advanced;
+      if (next && !state.v2Advanced && !confirm("高级模式会显示底层字段和未验证操作。继续前请确认已经备份原始存档。")) return;
+      state.v2Advanced = next;
+      state.counterUnlocked = next;
+      if (!next && state.cardLocation !== "hand") state.cardLocation = "hand";
+      document.body.setAttribute("data-v2-advanced-enabled", String(next));
+      const desktop = $("[data-v2-advanced]");
+      if (desktop) {
+        desktop.setAttribute("aria-pressed", String(next));
+        desktop.lastElementChild.textContent = next ? "关闭高级模式" : "开启高级模式";
+      }
+      const mobile = $("#v2MoreAdvanced");
+      if (mobile) mobile.textContent = next ? "关闭高级模式" : "开启高级模式";
+      renderActiveTab();
+      showToast(next ? "高级模式已开启，本次刷新后会自动关闭。" : "高级模式已关闭。");
+    }
+
+    function v2BuildShell() {
+      document.body.setAttribute("data-v2-advanced-enabled", "false");
+      const title = $(".brand h1");
+      if (title) title.textContent = "苏丹的游戏 · 存档修改器 V2";
+      const badge = $(".badges .badge");
+      if (badge) badge.textContent = "体验版 V2 · 本地离线";
+
+      const guide = $(".save-path-guide");
+      if (guide) {
+        const steps = h("div", {class:"v2-onboarding", ariaLabel:"使用步骤"}, [
+          h("div", {class:"v2-onboarding-step"}, [h("span", {class:"v2-step-number", text:"1"}), h("span", {}, [h("strong", {text:"备份原档"}), h("span", {text:"退出游戏或回到主菜单，复制一份原始存档。"})])]),
+          h("div", {class:"v2-onboarding-step"}, [h("span", {class:"v2-step-number", text:"2"}), h("span", {}, [h("strong", {text:"选择 USERARCHIVE"}), h("span", {text:"导入 000.json、001.json 等单局存档。"})])]),
+          h("div", {class:"v2-onboarding-step"}, [h("span", {class:"v2-step-number", text:"3"}), h("span", {}, [h("strong", {text:"改名并覆盖"}), h("span", {text:"下载后重命名为原本的纯数字存档名（如 001.json），再导回 USERARCHIVE 覆盖原文件。"})])])
+        ]);
+        guide.parentElement.insertBefore(steps, guide);
+        $$('li', guide).forEach(item => {
+          if (item.textContent.includes("保持原来的文件名")) {
+            item.textContent = "把下载的新存档重命名为原本的纯数字文件名（例如 001.json），再导回 USERARCHIVE 文件夹并覆盖对应的原存档。";
+          }
+        });
+        const detailsBody = h("div", {class:"v2-path-details-body"});
+        while (guide.firstChild) detailsBody.append(guide.firstChild);
+        const pathDetails = h("details", {class:"save-path-guide v2-path-details"}, [
+          h("summary", {text:"查看存档位置与完整替换说明"}), detailsBody
+        ]);
+        guide.replaceWith(pathDetails);
+      }
+
+      const editor = $("#editor");
+      const topbar = $(".topbar", editor);
+      const tabs = $(".tabs", editor);
+      const panels = $$(".tab-panel", editor);
+      const layout = h("div", {class:"v2-app-layout"});
+      const sidebar = h("aside", {class:"v2-sidebar", ariaLabel:"编辑任务"}, [
+        h("div", {class:"v2-sidebar-title", text:"存档任务"}),
+        v2NavButton("overview"), v2NavButton("cards"), v2NavButton("sultan"),
+        v2NavButton("rites"), v2NavButton("counters"),
+        h("div", {class:"v2-sidebar-divider"}), v2NavButton("raw"),
+        h("div", {class:"v2-sidebar-divider"}),
+        h("button", {
+          class:"v2-nav-button v2-advanced-toggle", type:"button", dataset:{v2Advanced:""},
+          ariaPressed:"false", onclick:() => v2ToggleAdvanced()
+        }, [h("span", {class:"v2-nav-icon", text:"⚙", ariaHidden:"true"}), h("span", {text:"开启高级模式"})])
+      ]);
+      const workspace = h("div", {class:"v2-workspace"});
+      editor.insertBefore(layout, tabs);
+      layout.append(sidebar, workspace);
+      workspace.append(tabs, ...panels);
+      panels.forEach(panel => { panel.tabIndex = -1; });
+
+      const openButton = h("button", {id:"v2OpenFile", class:"ghost small", type:"button", text:"换存档", onclick:() => $("#fileInput").click()});
+      $(".actions", topbar).prepend(openButton);
+
+      const bottom = h("nav", {class:"v2-bottom-nav", ariaLabel:"手机编辑任务"}, [
+        h("button", {class:"v2-mobile-nav-button", type:"button", dataset:{v2Route:"overview"}, onclick:() => activateTab("overview")}, [h("span", {text:"⌂"}), "首页"]),
+        h("button", {class:"v2-mobile-nav-button", type:"button", dataset:{v2Route:"cards"}, onclick:() => activateTab("cards")}, [h("span", {text:"牌"}), "手牌"]),
+        h("button", {class:"v2-mobile-nav-button", type:"button", dataset:{v2Route:"sultan"}, onclick:() => activateTab("sultan")}, [h("span", {text:"苏"}), "苏丹卡"]),
+        h("button", {class:"v2-mobile-nav-button", type:"button", dataset:{v2Route:"rites"}, onclick:() => activateTab("rites")}, [h("span", {text:"仪"}), "仪式"]),
+        h("button", {id:"v2MoreButton", class:"v2-mobile-nav-button", type:"button", ariaExpanded:"false", onclick:() => v2SetMoreOpen(!$("#v2MoreSheet").classList.contains("v2-open"))}, [h("span", {text:"⋯"}), "更多"])
+      ]);
+      const moreSheet = h("div", {id:"v2MoreSheet", class:"v2-more-sheet"}, [
+        v2NavButton("counters"), v2NavButton("raw"),
+        h("button", {id:"v2MoreAdvanced", class:"v2-nav-button", type:"button", text:"开启高级模式", onclick:() => { v2SetMoreOpen(false); v2ToggleAdvanced(); }})
+      ]);
+      document.body.append(bottom, moreSheet);
+      document.addEventListener("keydown", event => { if (event.key === "Escape") v2SetMoreOpen(false); });
+    }
+
+    function v2TaskCard(route, icon, title, description, count) {
+      return h("button", {class:"v2-task-card", type:"button", dataset:{v2Route:route}, onclick:() => activateTab(route)}, [
+        h("span", {class:"v2-task-icon", text:icon, ariaHidden:"true"}),
+        h("span", {class:"v2-task-copy"}, [h("strong", {text:title}), h("span", {text:description})]),
+        h("span", {class:"v2-task-count", text:String(count)})
+      ]);
+    }
+
+    function v2MarkAdvanced(root) {
+      if (!root) return;
+      $$("details", root).forEach(details => {
+        const summary = $("summary", details);
+        if (summary && /高级|技术信息|完整仪式资料库/.test(summary.textContent)) details.classList.add("v2-advanced-only");
+      });
+      const addTarget = $("#addCardTargetField");
+      if (addTarget) addTarget.classList.add("v2-advanced-only");
+    }
+
+    const v2LegacyRenderOverview = renderOverview;
+    renderOverview = function() {
+      v2LegacyRenderOverview();
+      const root = $("#tab-overview");
+      const hand = currentHandCards(collectCards()).length;
+      const pool = analyzeSultanPool();
+      const rites = Array.isArray(state.working.rites) ? state.working.rites.length : 0;
+      const resourceCount = RESOURCE_DEFS.filter(def => isPlainObject(state.working.counter) && Object.prototype.hasOwnProperty.call(state.working.counter, def.id)).length;
+      const statusClass = state.validation.errors.length ? "v2-danger" : "v2-good";
+      const statusText = state.validation.errors.length ? `${state.validation.errors.length} 个问题` : state.validation.warnings.length ? `${state.validation.warnings.length} 个提醒` : "检查通过";
+      const dashboard = fragment(
+        heading("任务首页", "选择要修改的内容；所有更改只保存在当前浏览器内存中。"),
+        h("div", {class:"v2-dashboard-status"}, [
+          h("div", {class:`v2-status-card ${statusClass}`}, [h("span", {text:"存档状态"}), h("strong", {text:statusText})]),
+          h("div", {class:"v2-status-card"}, [h("span", {text:"当前回合"}), h("strong", {text:state.working.round})]),
+          h("div", {class:"v2-status-card"}, [h("span", {text:"未保存修改"}), h("strong", {text:`${state.changes.length} 项`})]),
+          h("div", {class:"v2-status-card"}, [h("span", {text:"载入文件"}), h("strong", {text:state.fileName})])
+        ]),
+        state.v2SourceWarning ? h("div", {class:"notice warn", text:state.v2SourceWarning}) : null,
+        h("div", {class:"v2-task-grid"}, [
+          v2TaskCard("cards", "牌", "我的手牌与物品", "人物、情报、装备、书籍、消耗品、线索、地点与苏丹卡", hand),
+          v2TaskCard("sultan", "苏", "苏丹卡牌池", "本局总牌表、手牌、处理中、待抽与已经折断", pool.totalIds.length),
+          v2TaskCard("rites", "仪", "仪式与期限", "查看当前仪式、期限、状态与卡牌槽位", rites),
+          v2TaskCard("counters", "誉", "声望与资源", "善名、恶名、权势、侠名、灵视与金骰子", resourceCount)
+        ]),
+        h("h2", {class:"v2-home-section-label", text:"存档设置"})
+      );
+      root.prepend(dashboard);
+      v2MarkAdvanced(root);
+    };
+
+    function v2SetExpandable(items, kind) {
+      const stateKey = kind === "card" ? "v2ExpandedCardUid" : "v2ExpandedRiteUid";
+      const dataKey = kind === "card" ? "uid" : "riteUid";
+      for (const item of items) {
+        const id = item.dataset[dataKey];
+        const head = $(".item-head", item);
+        if (!head) continue;
+        const body = h("div", {class:"v2-item-body"});
+        while (head.nextSibling) body.append(head.nextSibling);
+        item.append(body);
+        const toggle = h("button", {
+          class:"v2-item-toggle", type:"button", ariaLabel:"展开或收起详情",
+          onclick:() => {
+            state[stateKey] = state[stateKey] === id ? null : id;
+            for (const peer of items) {
+              const peerId = peer.dataset[dataKey];
+              const open = peerId === state[stateKey];
+              peer.classList.toggle("v2-open", open);
+              const peerToggle = $(".v2-item-toggle", peer);
+              if (peerToggle) { peerToggle.textContent = open ? "收" : "展"; peerToggle.setAttribute("aria-expanded", String(open)); }
+            }
+          }
+        });
+        head.prepend(toggle);
+        const open = state[stateKey] === id;
+        item.classList.toggle("v2-open", open);
+        toggle.textContent = open ? "收" : "展";
+        toggle.setAttribute("aria-expanded", String(open));
+      }
+    }
+
+    function v2ProtectSpecialCard(article) {
+      const uid = Number(article.dataset.uid);
+      const item = findCard(uid);
+      if (!item) return;
+      const body = $(".v2-item-body", article);
+      const remove = $(".item-head .danger-button", article);
+      if (item.rootType === "ithink-card") {
+        if (remove) remove.remove();
+        if (body) body.prepend(h("div", {class:"notice warn v2-sultan-hand-notice", text:"这张卡正在事件处理中，不能从通用手牌页面直接移除。"}));
+        return;
+      }
+      if (!isSultanCardId(item.card.id) || item.rootType !== "cards") return;
+      if (remove) {
+        const action = h("button", {class:"small", type:"button", text:"前往苏丹卡牌池", onclick:() => activateTab("sultan")});
+        remove.replaceWith(action);
+      }
+      $$(".count-editor button, .count-editor input", article).forEach(control => { control.disabled = true; });
+      if (body) body.prepend(h("div", {class:"notice v2-sultan-hand-notice", text:"苏丹卡的数量、期限、卡种与折断状态请在“苏丹卡牌池”中修改，以保持本局总牌表一致。"}));
+    }
+
+    const v2LegacyRenderCards = renderCards;
+    renderCards = function() {
+      v2LegacyRenderCards();
+      const root = $("#tab-cards");
+      const category = $('select[aria-label="手牌分类"]', root);
+      if (category) {
+        category.classList.add("v2-category-select");
+        const bar = h("div", {class:"v2-category-bar", role:"group", ariaLabel:"手牌分类"});
+        for (const option of category.options) {
+          const button = h("button", {
+            class:"v2-category-chip", type:"button", text:option.textContent,
+            ariaPressed:String(option.value === state.cardCategory),
+            onclick:() => { state.cardCategory = option.value; state.cardLimit = CARD_PAGE_SIZE; state.v2ExpandedCardUid = null; renderCards(); }
+          });
+          bar.append(button);
+        }
+        category.parentElement.after(bar);
+      }
+      const location = $(".toolbar select:not([aria-label='手牌分类'])", root);
+      if (location) for (const option of location.options) {
+        const advanced = option.textContent.startsWith("高级：");
+        option.hidden = advanced && !state.v2Advanced;
+        option.disabled = advanced && !state.v2Advanced;
+      }
+      const items = $$(".card-item", root);
+      $$('details', root).forEach(details => {
+        const summary = $("summary", details);
+        if (summary && summary.textContent.startsWith("自定义名称与说明")) details.remove();
+      });
+      v2SetExpandable(items, "card");
+      items.forEach(v2ProtectSpecialCard);
+      v2MarkAdvanced(root);
+    };
+
+    const v2LegacyRenderRites = renderRites;
+    renderRites = function() {
+      v2LegacyRenderRites();
+      const root = $("#tab-rites");
+      $$("label", root).forEach(label => {
+        const caption = $("span", label);
+        if (caption && caption.textContent.trim() === "自定义仪式名称") label.remove();
+      });
+      v2SetExpandable($$(".rite-item:not(.rite-catalog-item)", root), "rite");
+      v2MarkAdvanced(root);
+    };
+
+    function v2RemoveSultanOrderUi(root) {
+      if (!root) return;
+      $$(".sultan-token", root).forEach(token => {
+        const cardId = token.dataset.cardId || "";
+        const stateName = token.dataset.sultanState === "pending" ? "待抽" : ($("small", token) ? $("small", token).textContent.replace(/下一张|待抽\s*\d+/g, "待抽") : "");
+        const action = token.dataset.sultanState === "pending" ? "修改卡种或折断" : (token.getAttribute("aria-label") || "").split("，").slice(2).join("，");
+        const cardName = (token.getAttribute("aria-label") || "").split("，")[0];
+        token.title = `卡牌编号 ${cardId}${token.dataset.inferred === "true" ? " · 状态按同类卡数量推定" : ""}`;
+        token.setAttribute("aria-label", [cardName, stateName, action].filter(Boolean).join("，"));
+        const small = $("small", token);
+        if (small && token.dataset.sultanState === "pending") small.textContent = "待抽";
+      });
+      $$('button', root).forEach(button => {
+        if (/^(设为下一张|向前一位|向后一位)$/.test(button.textContent.trim())) button.remove();
+      });
+      $$("span, p, div", root).forEach(element => {
+        if (element.children.length) return;
+        const text = element.textContent.trim();
+        if (/^(下一张将抽到|待抽第 \d+ 张)$/.test(text)) element.textContent = "待抽牌池中的卡";
+        else if (text === "下一张") element.textContent = "待抽";
+        else if (text.startsWith("按预计抽取顺序排列")) element.textContent = "以下卡牌均属于剩余随机牌池。";
+        else if (text.startsWith("牌序记录缺失或重复")) element.textContent = "内部卡位记录缺失或重复，暂不能可靠修改卡种。";
+      });
+      $$(".meta-item", root).forEach(item => {
+        const label = $(".meta-label", item);
+        if (!label) return;
+        if (/原始牌序|下一原始牌序/.test(label.textContent)) item.remove();
+        else if (label.textContent === "下一张卡牌编号") label.textContent = "卡牌 UID 分配器";
+      });
+    }
+
+    function v2NeutralizeSultanOrderText(message) {
+      return String(message)
+        .replace(/待抽苏丹卡的原始牌序缺失或重复，无法可靠调整抽取顺序。/g, "待抽苏丹卡的内部卡位编号缺失或重复，无法可靠对应本局总牌表。")
+        .replace(/原始牌序/g, "内部卡位编号")
+        .replace(/牌序分配器/g, "内部卡位编号分配器")
+        .replace(/牌序记录/g, "内部卡位记录")
+        .replace(/抽取顺序/g, "随机牌池状态");
+    }
+
+    const v2LegacyShowToast = showToast;
+    showToast = function(message, error = false) {
+      return v2LegacyShowToast(v2NeutralizeSultanOrderText(message), error);
+    };
+
+    const v2LegacyRenderSultanSlotDialog = renderSultanSlotDialog;
+    renderSultanSlotDialog = function(slot, model) {
+      v2LegacyRenderSultanSlotDialog(slot, model);
+      v2RemoveSultanOrderUi($("#sultanCardDialogBody"));
+      const subtitle = $("#sultanCardDialogSubtitle");
+      if (subtitle) subtitle.textContent = subtitle.textContent.replace(/下一张|待抽\s*\d+/g, "待抽");
+    };
+
+    const v2LegacyRenderSultanPool = renderSultanPool;
+    renderSultanPool = function() {
+      v2LegacyRenderSultanPool();
+      const root = $("#tab-sultan");
+      $$("section.subpanel", root).forEach(section => {
+        const title = $("h3", section);
+        const key = title && title.textContent.startsWith("手牌中的苏丹卡") ? "held"
+          : title && title.textContent.startsWith("卡池中余留的待抽苏丹卡") ? "pending" : "";
+        if (key) {
+          const details = h("details", {class:"v2-sultan-section-fold v2-advanced-only span-12"});
+          details.open = state.v2SultanSectionOpen[key];
+          details.addEventListener("toggle", () => { state.v2SultanSectionOpen[key] = details.open; });
+          const summary = h("summary", {text:title.textContent});
+          title.remove();
+          section.classList.add("v2-sultan-section-body");
+          section.before(details);
+          details.append(summary, section);
+        } else if (title && title.textContent.startsWith("直接增加待抽卡")) {
+          section.classList.add("v2-advanced-only");
+        }
+      });
+      v2RemoveSultanOrderUi(root);
+      v2MarkAdvanced(root);
+    };
+    const v2LegacyRenderCounters = renderCounters;
+    renderCounters = function() { v2LegacyRenderCounters(); v2MarkAdvanced($("#tab-counters")); };
+    const v2LegacyRenderRaw = renderRaw;
+    renderRaw = function() { v2LegacyRenderRaw(); v2MarkAdvanced($("#tab-raw")); };
+
+    const v2LegacyJumpToCard = jumpToCard;
+    jumpToCard = function(uid) { state.v2ExpandedCardUid = String(uid); return v2LegacyJumpToCard(uid); };
+    const v2LegacyJumpToSultanProcessing = jumpToSultanProcessing;
+    jumpToSultanProcessing = function(item) {
+      if (item && item.route && item.route[0] === "rites") {
+        const rite = state.working.rites[item.route[1]];
+        if (rite) state.v2ExpandedRiteUid = String(rite.uid);
+      }
+      return v2LegacyJumpToSultanProcessing(item);
+    };
+
+    const v2LegacyConfirmAddCard = confirmAddCard;
+    confirmAddCard = function() {
+      try {
+        const id = parsePositiveId($("#addCardId").value, "卡牌编号");
+        if (isSultanCardId(id)) {
+          $("#addCardDialog").close();
+          activateTab("sultan");
+          showToast("苏丹卡请在“苏丹卡牌池”的对应品级列中安全添加。", true);
+          return;
+        }
+      } catch (_) { /* Let the legacy handler display the canonical error. */ }
+      return v2LegacyConfirmAddCard();
+    };
+
+    function v2SyncSultanPoolSlots(save) {
+      if (!save || !Array.isArray(save.sudan_pool_cards)) throw new Error("这个存档没有本局苏丹卡总牌表。");
+      for (const item of collectCards(save)) {
+        if (!item.card || !isSultanCardId(item.card.id)) continue;
+        const index = sultanPoolIndex(item.card);
+        if (!isSafeInt(index) || index <= 0 || index > save.sudan_pool_cards.length) {
+          throw new Error(`苏丹卡 UID ${item.card.uid} 的内部卡位编号无效，无法同步总牌表。`);
+        }
+        save.sudan_pool_cards[index - 1] = item.card.id;
+      }
+    }
+
+    const v2LegacyMutate = mutate;
+    mutate = function(description, operation) {
+      const neutralDescription = String(description).replace(/^把第 \d+ 张待抽卡改为/, "把待抽牌池中的苏丹卡改为");
+      const changesSultanIdentity = /^把手牌中的|^把待抽牌池中的苏丹卡改为/.test(neutralDescription);
+      return v2LegacyMutate(neutralDescription, () => {
+        operation();
+        if (changesSultanIdentity) v2SyncSultanPoolSlots(state.working);
+      });
+    };
+
+    function v2CardShapeErrors(card, route) {
+      const errors = [];
+      if (!isPlainObject(card)) return [`${route} 必须是卡牌对象。`];
+      for (const key of ["uid","id","count","life","rareup","bag","bagpos"]) {
+        if (!isSafeInt(card[key])) errors.push(`${route}.${key} 必须是安全整数。`);
+      }
+      if (!isPlainObject(card.tag)) errors.push(`${route}.tag 必须是对象。`);
+      if (!Array.isArray(card.equip_slots) || card.equip_slots.some(value => typeof value !== "string")) errors.push(`${route}.equip_slots 必须是字符串数组。`);
+      if (!Array.isArray(card.equips)) errors.push(`${route}.equips 必须是数组。`);
+      if (typeof card.custom_name !== "string") errors.push(`${route}.custom_name 必须是字符串。`);
+      if (typeof card.custom_text !== "string") errors.push(`${route}.custom_text 必须是字符串。`);
+      return errors;
+    }
+
+    const v2LegacyValidateSave = validateSave;
+    validateSave = function(save, baselineSlotLengths = state.riteSlotLengths) {
+      const result = v2LegacyValidateSave(save, baselineSlotLengths);
+      const errors = result.errors.slice();
+      const warnings = [];
+      for (const message of result.warnings) {
+        const neutralMessage = v2NeutralizeSultanOrderText(message);
+        if (/^苏丹卡数量未闭合|^待抽苏丹卡的内部卡位编号|仍存在的苏丹卡无法对应/.test(neutralMessage)) errors.push(neutralMessage);
+        else warnings.push(neutralMessage);
+      }
+      if (save && Object.prototype.hasOwnProperty.call(save, "ithink_card") && save.ithink_card !== null) {
+        errors.push(...v2CardShapeErrors(save.ithink_card, "ithink_card"));
+      }
+      try {
+        const seen = new Set();
+        for (const item of collectCards(save)) {
+          const uid = item.card && item.card.uid;
+          if (!isSafeInt(uid)) continue;
+          if (seen.has(uid)) errors.push(`卡牌 UID ${uid} 重复（包含事件处理中卡牌）。`);
+          seen.add(uid);
+        }
+      } catch (error) {
+        errors.push(`无法检查全部卡牌位置：${error.message || error}`);
+      }
+      if (Array.isArray(save && save.sudan_pool_cards)) {
+        save.sudan_pool_cards.forEach((id, index) => {
+          if (!isSafeInt(id) || id <= 0) errors.push(`sudan_pool_cards[${index}] 必须是正安全整数。`);
+        });
+      }
+      if (Array.isArray(save && save.sudan_card_pool) && save.sudan_card_pool.length) {
+        if (!isPlainObject(save.gen_tags) || !isSafeInt(save.gen_tags.sudan_pool_index) || save.gen_tags.sudan_pool_index <= 0) {
+          errors.push("gen_tags.sudan_pool_index 必须是正安全整数。");
+        } else {
+          const indexes = collectCards(save).map(item => sultanPoolIndex(item.card)).filter(value => isSafeInt(value) && value > 0);
+          if (indexes.length && save.gen_tags.sudan_pool_index <= Math.max(...indexes)) errors.push("gen_tags.sudan_pool_index 必须大于所有现有苏丹卡内部卡位编号。");
+        }
+      }
+      return {errors:[...new Set(errors)], warnings:[...new Set(warnings)]};
+    };
+
+    refreshValidation = function() {
+      state.validation = validateSave(state.working, state.riteSlotLengths);
+      return state.validation;
+    };
+
+    function v2ClassifySave(parsed) {
+      if (Array.isArray(parsed)) return "这个文件像是 user_archive.json 槽位索引，不是 USERARCHIVE 单局存档。";
+      if (!isPlainObject(parsed)) return "JSON 根必须是对象。";
+      if (Array.isArray(parsed.char_cards) && isPlainObject(parsed.player_data)) return "这个文件像是结局记录，不是 USERARCHIVE 单局存档。";
+      if (!Array.isArray(parsed.cards) && (parsed.upgrade || parsed.achievements || parsed.quest)) return "这个文件像是 global.json 局外进度，不是 USERARCHIVE 单局存档。";
+      return "";
+    }
+
+    const v2LegacyLoadFile = loadFile;
+    loadFile = async function(file) {
+      if (!file) return;
+      if (state.working && !isSemanticallyOriginal() && !confirm("当前存档还有未下载的修改。确定打开另一个存档吗？")) return;
+      try {
+        const parsed = JSON.parse((await file.text()).replace(/^\uFEFF/, ""));
+        const unsupported = v2ClassifySave(parsed);
+        if (unsupported) { showToast(unsupported, true); return; }
+        state.v2SourceWarning = /^\d{3}\.json$/i.test(file.name) ? "" : `文件名“${file.name}”不是常见的 USERARCHIVE 编号存档；已按单局存档结构载入。`;
+      } catch (_) {
+        state.v2SourceWarning = "";
+      }
+      await v2LegacyLoadFile(file);
+      if (state.working) {
+        document.body.classList.add("v2-loaded");
+        renderAll();
+      }
+    };
+
+    const v2LegacyActivateTab = activateTab;
+    activateTab = function(name) {
+      v2LegacyActivateTab(name);
+      v2SyncNavigation();
+      const panel = $(`#tab-${name}`);
+      if (panel) panel.focus({preventScroll:true});
+    };
+
+    const v2LegacyRenderTopbar = renderTopbar;
+    renderTopbar = function() {
+      v2LegacyRenderTopbar();
+      if (!state.working) return;
+      $("#exportButton").disabled = false;
+      document.body.classList.add("v2-loaded");
+    };
+
+    const v2LegacyInit = init;
+    init = function() {
+      v2BuildShell();
+      v2LegacyInit();
+      v2SyncNavigation();
+    };
+
+    window.__SULTAN_V2_TEST__ = Object.freeze({
+      get working() { return state.working; },
+      get state() { return state; },
+      activateTab,
+      analyzeSultanPool:() => analyzeSultanPool(state.working)
+    });
+
 
     window.SaveEditorCore = Object.freeze({validateSave, collectCards, riteTimerInfo, makeUnknownReport, createCardInstance});
     init();
